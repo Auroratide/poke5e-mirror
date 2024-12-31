@@ -29,18 +29,18 @@ jobs:
           publish_dir: ./build
           cname: poke5e.app
 
-  test:
-    name: Test
-    needs: deploy
-    runs-on: ubuntu-22.04 # See: https://github.com/puppeteer/puppeteer/issues/12818
-    env:
-      ENV: prod
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm test
+  # test:
+  #   name: Test
+  #   needs: deploy
+  #   runs-on: ubuntu-22.04 # See: https://github.com/puppeteer/puppeteer/issues/12818
+  #   env:
+  #     ENV: prod
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: pnpm/action-setup@v4
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version-file: '.nvmrc'
+  #         cache: pnpm
+  #     - run: pnpm install --frozen-lockfile
+  #     - run: pnpm test

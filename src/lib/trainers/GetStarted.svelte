@@ -2,11 +2,13 @@
 	import { browser } from "$app/environment"
 	import { base } from "$app/paths"
 	import Button from "$lib/design/Button.svelte"
+	import { MY_ORIGIN } from "./migration/origins"
+	import { migrationStatus } from "./migration/store"
 
-	const isNotMigrated =
+	$: isNotMigrated =
 		browser &&
-		window.location.origin === "https://poke5e.app" &&
-		localStorage.getItem("migrated") != null
+		window.location.origin === MY_ORIGIN &&
+		($migrationStatus === "done" || $migrationStatus === "failed")
 </script>
 
 <section class="larger center more-space">
